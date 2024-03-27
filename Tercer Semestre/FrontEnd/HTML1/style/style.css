@@ -1,0 +1,19 @@
+h1 {
+    color: red;
+    font-size: 12px;
+}
+
+#Titulo2 {
+    text-align: center;
+    color: blue;
+    font-size: 80px;
+    font-family:'Times New Roman', Times, serif ;
+}
+
+.textoBonito {
+    color: red;
+}
+
+.subrayado {
+    text-decoration: underline ;
+}
