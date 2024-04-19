@@ -1,0 +1,154 @@
+/*
+--sapphire: #4059adff;
+--blue-gray: #6b9ac4ff;
+--tiffany-blue: #97d8c4ff;
+--antiflash-white: #eff2f1ff;
+--xanthous: #f4b942ff;
+*/
+table, th, td {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+.navbar-expand-lg {
+    background-color: #F4B942;
+}
+.navbar-brand {
+    text-decoration: none !important;
+}
+body {
+    background-color: #4059AD;
+    color: white; 
+}
+#img-logo {
+    width: 50px;
+    height: 50px;
+}
+#hamburguer-icon {
+    height: 20px;
+}
+.carousel-item {
+    height: 500px;  /* Altura fija para el carrusel */
+}
+
+.carousel-item img {
+    object-fit: cover;  /* Asegura que las imágenes cubran completamente el área del carrusel sin distorsionarse */
+    border: 2px solid white;
+    height: 500px;  /* Altura fija para el carrusel */
+    width: 800px;
+}
+
+#email-input-suscribe {
+    width: 100%;    
+    max-width: 500px; 
+    padding: 10px;  
+    margin: auto;  
+    display: block; 
+}
+
+#submit-suscribe {
+    display: block; 
+    width: 200px;   
+    margin: 10px auto; 
+}
+
+a {
+    color: #f4b942ff; 
+    text-decoration: none; 
+}
+
+a:hover {
+    color: #eff2f1ff; 
+    text-decoration: underline; 
+}
+
+.titulo-hora {
+    color: #97d8c4ff;
+}
+
+.modal-title {
+    color: #4059adff;
+}
+
+.offcanvas {
+    background-color: #4059ad; 
+    color: #eff2f1; 
+}
+
+.offcanvas-header {
+    background-color: #97D8C4; 
+    color: black; 
+}
+
+.formulario {
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    
+}
+
+.form-control {
+    width: 600px;
+}
+
+
+.form-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+}
+
+.form-control, .select-email {
+    margin-right: 5px; /* Asegúrate de dejar algo de espacio entre los campos */
+}
+
+.select-email {
+    flex-grow: 1; /* El select puede crecer para llenar el espacio si es necesario */
+    /* O puedes establecer un ancho fijo si prefieres */
+    /* width: 200px; */
+}
+
+/* Estilos para la responsividad en dispositivos más pequeños */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+    }
+
+    .form-control, .select-email {
+        margin-right: 0;
+        margin-bottom: 5px; /* Espacio entre campos cuando están en columna */
+    }
+}
+
+.contact-info {
+    background-color: #eff2f1; /* Usa un color de tu paleta para el fondo */
+    color: #4059ad; /* Usa un color de tu paleta para el texto */
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Esto mantiene una relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 10px; /* Espacio adicional debajo del mapa */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#submit-enviar{
+    /*centrar el boton*/
+    margin-left: 250px;
+}
