@@ -1,0 +1,28 @@
+/* src/pages/ProductList.css */
+
+.col-id {
+    width: 15%;
+    word-break: break-all;
+    /* Permitir que el texto se ajuste si es necesario */
+}
+
+.col-name {
+    width: 15%;
+}
+
+.col-price {
+    width: 10%;
+}
+
+.col-stock {
+    width: 10%;
+}
+
+.col-description {
+    width: 30%;
+    /* Aumentar el tamaño de la columna de descripción */
+}
+
+.col-actions {
+    width: 20%;
+}

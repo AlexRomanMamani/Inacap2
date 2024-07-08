@@ -1,0 +1,69 @@
+/* src/components/NavBar.css */
+
+/* Estilo de fondo y color para la barra de navegación */
+.navbar-custom {
+    background-color: #343a40;
+    /* Color de fondo oscuro */
+    color: #ffffff;
+    /* Color del texto */
+}
+
+/* Estilo para los enlaces de navegación */
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand,
+.navbar-custom .dropdown-item {
+    color: #ffffff;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Efecto hover para los enlaces de navegación */
+.navbar-custom .nav-link:hover,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .dropdown-item:hover {
+    color: #00bfff;
+    /* Cambiar color del texto al pasar el mouse */
+    background-color: #454d55;
+    /* Cambiar el color de fondo del enlace al pasar el mouse */
+}
+
+/* Estilo para el ícono del carrito */
+.navbar-custom .bi-cart-fill {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+/* Estilo para el botón del menú desplegable */
+.navbar-custom .navbar-toggler {
+    border-color: #ffffff;
+}
+
+/* Estilo para la sombra de la barra de navegación */
+.navbar-custom {
+    box-shadow: 0 4px 6px -6px #222;
+}
+
+/* Estilo para el menú desplegable */
+.navbar-custom .dropdown-menu {
+    background-color: #343a40;
+    /* Fondo del menú desplegable */
+    border: none;
+}
+
+/* Estilo para los elementos del menú desplegable */
+.navbar-custom .dropdown-item {
+    color: #ffffff;
+}
+
+/* Efecto hover para los elementos del menú desplegable */
+.navbar-custom .dropdown-item:hover {
+    color: #00bfff;
+    background-color: #454d55;
+}
+
+.cart-icon {
+    color: white;
+}
+
+.cart-icon-filled {
+    color: red !important; /* Asegúrate de que el color se aplique correctamente */
+}

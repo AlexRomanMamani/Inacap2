@@ -2,7 +2,8 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
-import { Container, Row, Col, Button, ListGroup, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import './HomePage.css'; // Importar el archivo CSS personalizado
 
 const KEY = 'productList';
 
@@ -37,28 +38,34 @@ const HomePage = () => {
 
     return (
         <Container>
-            <h1 className="my-4">Productos a la Venta</h1>
-            <ListGroup>
+            <h1 className="my-4 text-center">Productos a la Venta</h1>
+            <Row>
                 {products.map(product => (
-                    <ListGroup.Item key={product.id}>
-                        <Row className="align-items-center">
-                            <Col>{product.name}</Col>
-                            <Col>${product.price}</Col>
-                            <Col>Stock: {product.stock}</Col>
-                            <Col>
-                                <Button variant="outline-secondary" onClick={() => handleQuantityChange(product.id, -1)} disabled={(quantities[product.id] || 0) <= 0}>-</Button>
-                                <span className="mx-2">{quantities[product.id] || 0}</span>
-                                <Button variant="outline-secondary" onClick={() => handleQuantityChange(product.id, 1)} disabled={(quantities[product.id] || 0) >= product.stock}>+</Button>
-                            </Col>
-                            <Col>
-                                <Button variant="primary" onClick={() => handleAddToCart(product)} disabled={(quantities[product.id] || 0) === 0 || (quantities[product.id] || 0) > product.stock}>
-                                    Agregar al Carrito
-                                </Button>
-                            </Col>
-                        </Row>
-                    </ListGroup.Item>
+                    <Col md={4} key={product.id} className="mb-4">
+                        <Card className="product-card">
+                            <Card.Img variant="top" src={product.image} alt={product.name} className="product-image" />
+                            <Card.Body>
+                                <Card.Title>{product.name}</Card.Title>
+                                <Card.Text>
+                                    <strong>Precio:</strong> ${product.price}<br />
+                                    <strong>Stock:</strong> {product.stock}<br />
+                                    <strong>Descripción:</strong> {product.description}
+                                </Card.Text>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <Button variant="outline-secondary" onClick={() => handleQuantityChange(product.id, -1)} disabled={(quantities[product.id] || 0) <= 0}>-</Button>
+                                        <span className="mx-2">{quantities[product.id] || 0}</span>
+                                        <Button variant="outline-secondary" onClick={() => handleQuantityChange(product.id, 1)} disabled={(quantities[product.id] || 0) >= product.stock}>+</Button>
+                                    </div>
+                                    <Button variant="primary" onClick={() => handleAddToCart(product)} disabled={(quantities[product.id] || 0) === 0 || (quantities[product.id] || 0) > product.stock}>
+                                        Agregar al Carrito
+                                    </Button>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
                 ))}
-            </ListGroup>
+            </Row>
         </Container>
     );
 };

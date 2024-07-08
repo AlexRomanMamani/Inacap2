@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
+import './SalesDetailsPage.css';
 
 const PURCHASE_KEY = 'purchaseList';
 const PRODUCT_KEY = 'productList';
@@ -27,6 +28,10 @@ const SalesDetailsPage = () => {
     }, [products]);
 
     const annulPurchase = (id) => {
+        const confirmAnnulment = window.confirm('¿Estás seguro de que deseas anular esta venta?');
+
+        if (!confirmAnnulment) return;
+
         const updatedPurchases = purchases.map(purchase => {
             if (purchase.id === id) {
                 const updatedProducts = products.map(product => {
@@ -49,33 +54,47 @@ const SalesDetailsPage = () => {
     return (
         <Container>
             <h1 className="my-4">Detalles de Ventas</h1>
-            <ListGroup>
-                {purchases.map(purchase => (
-                    <ListGroup.Item key={purchase.id}>
-                        <Row>
-                            <Col>
-                                Código: {purchase.id} - Fecha: {new Date(purchase.date).toLocaleString()} - Estado: {purchase.status}
-                                {purchase.status !== 'anulada' && (
-                                    <Button variant="warning" className="ml-2" onClick={() => annulPurchase(purchase.id)}>Anular Venta</Button>
-                                )}
-                            </Col>
-                        </Row>
-                        <ListGroup className="mt-2">
-                            {purchase.products.map((product, index) => (
-                                <ListGroup.Item key={index}>
+            {purchases.length === 0 ? (
+                <p>No hay detalles de ventas disponibles.</p>
+            ) : (
+                <ListGroup>
+                    {purchases.map(purchase => (
+                        <ListGroup.Item key={purchase.id}>
+                            <Row className="d-flex align-items-center">
+                                <Col>
+                                    Código: {purchase.id} - Fecha: {new Date(purchase.date).toLocaleString()} - Estado: <span className="text-nowrap">{purchase.status}</span>
+                                </Col>
+                                <Col className="text-right d-flex align-items-center justify-content-end">
+                                    <h5 className="mr-3 mb-0">Total Venta: ${purchase.totalPrice}</h5>
+                                    {purchase.status !== 'anulada' && (
+                                        <Button variant="warning" onClick={() => annulPurchase(purchase.id)}>Anular Venta</Button>
+                                    )}
+                                </Col>
+                            </Row>
+                            <ListGroup className="mt-2">
+                                <ListGroup.Item>
                                     <Row>
-                                        <Col>{product.name}</Col>
-                                        <Col>${product.price}</Col>
-                                        <Col>x {product.quantity}</Col>
-                                        <Col>= ${product.total}</Col>
+                                        <Col><strong>Nombre Producto</strong></Col>
+                                        <Col><strong>Precio</strong></Col>
+                                        <Col><strong>Cantidad</strong></Col>
+                                        <Col><strong>Total</strong></Col>
                                     </Row>
                                 </ListGroup.Item>
-                            ))}
-                        </ListGroup>
-                        <h3 className="mt-2">Total Venta: ${purchase.totalPrice}</h3>
-                    </ListGroup.Item>
-                ))}
-            </ListGroup>
+                                {purchase.products.map((product, index) => (
+                                    <ListGroup.Item key={index}>
+                                        <Row>
+                                            <Col>{product.name}</Col>
+                                            <Col>${product.price}</Col>
+                                            <Col>{product.quantity}</Col>
+                                            <Col>${product.total}</Col>
+                                        </Row>
+                                    </ListGroup.Item>
+                                ))}
+                            </ListGroup>
+                        </ListGroup.Item>
+                    ))}
+                </ListGroup>
+            )}
         </Container>
     );
 };

@@ -1,9 +1,7 @@
-// src/pages/CartPage.jsx
-
 import React, { useContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { CartContext } from '../context/CartContext';
-import { Container, Row, Col, Button, ListGroup, Table } from 'react-bootstrap';
+import { Container, Row, Col, Button, Table } from 'react-bootstrap';
 
 const PURCHASE_KEY = 'purchaseList';
 const PRODUCT_KEY = 'productList';
@@ -30,16 +28,19 @@ const CartPage = () => {
     }, [products]);
 
     const confirmPurchase = () => {
-        const purchase = {
-            id: uuidv4(),
-            date: new Date(),
-            products: cart,
-            totalPrice,
-            status: 'completada'
-        };
-        const newPurchases = [...purchases, purchase];
-        setPurchases(newPurchases);
-        clearCart();
+        const confirm = window.confirm('¿Estás seguro de que deseas confirmar la compra?');
+        if (confirm) {
+            const purchase = {
+                id: uuidv4(),
+                date: new Date(),
+                products: cart,
+                totalPrice,
+                status: 'completada'
+            };
+            const newPurchases = [...purchases, purchase];
+            setPurchases(newPurchases);
+            clearCart();
+        }
     };
 
     const handleRemoveFromCart = (product) => {
@@ -71,8 +72,8 @@ const CartPage = () => {
                         <tr key={index}>
                             <td>{item.name}</td>
                             <td>${item.price}</td>
-                            <td>x {item.quantity}</td>
-                            <td>= ${item.total}</td>
+                            <td>{item.quantity}</td>
+                            <td>${item.total}</td>
                             <td>
                                 <Button variant="danger" onClick={() => handleRemoveFromCart(item)}>Eliminar</Button>
                             </td>
@@ -81,7 +82,7 @@ const CartPage = () => {
                 </tbody>
             </Table>
             <h2 className="my-4">Total Compra: ${totalPrice}</h2>
-            <Button variant="success" onClick={confirmPurchase}>Confirmar Compra</Button>
+            <Button variant="success" onClick={confirmPurchase} disabled={cart.length === 0}>Confirmar Compra</Button>
         </Container>
     );
 };

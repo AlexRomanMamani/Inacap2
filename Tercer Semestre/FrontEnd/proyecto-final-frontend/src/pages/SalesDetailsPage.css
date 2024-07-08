@@ -1,0 +1,9 @@
+/* src/pages/SalesDetailsPage.css */
+
+.d-flex.align-items-center.justify-content-end h5 {
+    margin-right: 1rem;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}

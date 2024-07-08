@@ -1,0 +1,25 @@
+/* src/pages/HomePage.css */
+
+.product-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image {
+    max-height: 100px;
+    /* Ajustar el tamaño de la imagen */
+    width: auto;
+    /* Mantener la proporción de la imagen */
+    object-fit: contain;
+    margin: 20px auto 0 auto;
+    /* Centrar la imagen horizontalmente */
+}
+
+.product-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
