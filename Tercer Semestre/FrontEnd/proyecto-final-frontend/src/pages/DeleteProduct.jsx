@@ -1,4 +1,5 @@
 // src/pages/DeleteProduct.jsx
+// TODO aplicar Window.confirm("message")
 
 import React, { useState, useEffect } from 'react';
 import { Container, ListGroup, Row, Col, Button } from 'react-bootstrap';
